@@ -6,10 +6,10 @@ Static marketing site for MenuMines, a macOS menu bar Minesweeper app. Single `i
 
 ## Tech Stack
 
-- Plain HTML, no framework, no external CSS dependencies
+- Plain HTML, no framework
+- Tailwind CSS v4 via `@tailwindcss/cli`
 - JetBrains Mono font via Google Fonts
-- All styles are inline in a `<style>` block (utility classes baked in, no Tailwind CDN)
-- No build system, no package.json, no bundler
+- Build: `npm run build:css` (or `npm run dev` for watch mode)
 
 ## Architecture
 
@@ -30,16 +30,18 @@ Everything lives in `index.html`. The page sections in order:
 - Primary buttons: purple gradient `#667eea` -> `#764ba2`
 - Glass-morphism cards: `rgba(255,255,255,0.05)` with `backdrop-blur`
 - All text uses JetBrains Mono
-- All styles (custom components + utility classes) are in the `<style>` block at the top of `index.html`
-- Class names follow Tailwind naming conventions but are hand-written CSS (no Tailwind dependency)
+- Custom component styles live in `src/styles.css` alongside the Tailwind import
+- Standard Tailwind utility classes are used in `index.html`
+- Built CSS output goes to `dist/styles.css` (committed for GitHub Pages)
 
 ## Development
 
-No build step. Open `index.html` directly or use any static file server.
-
 ```sh
-python3 -m http.server 8000
+npm install
+npm run dev
 ```
+
+Open `index.html` directly or use any static file server. The `dev` script watches for changes and rebuilds `dist/styles.css`.
 
 ## Deployment
 

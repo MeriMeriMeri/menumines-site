@@ -11,34 +11,38 @@ This repo contains the static marketing site, currently deployed on **GitHub Pag
 ## Tech Stack
 
 - Plain HTML (single `index.html`)
+- [Tailwind CSS](https://tailwindcss.com) v4 (built via CLI)
 - [JetBrains Mono](https://www.jetbrains.com/lp/mono/) font via Google Fonts
-- All CSS is inline (no external stylesheet dependencies)
-- No build step required
 
 ## Local Development
 
-Open `index.html` in a browser:
-
 ```sh
+npm install
+npm run build:css
 open index.html
 ```
 
-Or use any local server:
+To rebuild CSS on changes:
 
 ```sh
-python3 -m http.server 8000
+npm run dev
 ```
-
-Then visit `http://localhost:8000`.
 
 ## Deployment
 
 The site is deployed via [GitHub Pages](https://pages.github.com/) from the `main` branch. Pushing to `main` triggers a deploy automatically.
 
+`dist/styles.css` is committed to the repo so GitHub Pages can serve it directly.
+
 ## Project Structure
 
 ```
 .
-├── index.html    # The entire marketing site
+├── src/
+│   └── styles.css    # Source CSS (Tailwind + custom styles)
+├── dist/
+│   └── styles.css    # Generated output (committed for GitHub Pages)
+├── index.html        # The marketing page
+├── package.json
 └── README.md
 ```
